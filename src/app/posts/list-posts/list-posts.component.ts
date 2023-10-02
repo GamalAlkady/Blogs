@@ -49,15 +49,18 @@ export class ListPostsComponent {
   }
 
   searchPost(event){
-    this.store.dispatch(invokedPostsActionBy({search:this._search}));
-    let appStatus$=this.appStore.pipe(select(selectAppState))
-    appStatus$.subscribe((data)=>{
-      // console.log(data)
-      if(data.apiStatus==='success'){
-        this.appStore.dispatch(setAPIStatus({apiStatus:{apiResponseMessage:'',apiStatus:''}}));
-        this._search=null;
-      }
-    })
+   if (this._search!=null){
+     console.log(this._search)
+     this.store.dispatch(invokedPostsActionBy({search:this._search}));
+     let appStatus$=this.appStore.pipe(select(selectAppState))
+     appStatus$.subscribe((data)=>{
+       // console.log(data)
+       if(data.apiStatus==='success'){
+         this.appStore.dispatch(setAPIStatus({apiStatus:{apiResponseMessage:'',apiStatus:''}}));
+         this._search=null;
+       }
+     })
+   }
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {

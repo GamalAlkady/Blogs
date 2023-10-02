@@ -41,21 +41,21 @@ export class PostsEffects {
     )
   )
 
-  loadPostsBy$=createEffect(()=>
-    this.actions$.pipe(
-      ofType(invokedPostsActionBy),
-      switchMap((action)=>{
-        this.appStore.dispatch(setAPIStatus({apiStatus:{apiResponseMessage:'',apiStatus:''}}))
-        return this.postService.getBy("search="+action.search)
-          .pipe(
-            map((data)=> {
-              this.appStore.dispatch(setAPIStatus({apiStatus:{apiResponseMessage:'',apiStatus:'success'}}));
-              return postsFetchAPISuccess({posts:data})
-            })
-          )
-      })
-    )
-  )
+  // loadPostsBy$=createEffect(()=>
+  //   this.actions$.pipe(
+  //     ofType(invokedPostsActionBy),
+  //     switchMap((action)=>{
+  //       this.appStore.dispatch(setAPIStatus({apiStatus:{apiResponseMessage:'',apiStatus:''}}))
+  //       return this.postService.getBy("search="+action.search)
+  //         .pipe(
+  //           map((data)=> {
+  //             this.appStore.dispatch(setAPIStatus({apiStatus:{apiResponseMessage:'',apiStatus:'success'}}));
+  //             return postsFetchAPISuccess({posts:data})
+  //           })
+  //         )
+  //     })
+  //   )
+  // )
 
   getOnePost$=createEffect(()=>
     this.actions$.pipe(
