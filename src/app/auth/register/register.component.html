@@ -1,0 +1,56 @@
+<div class="h-100 d-flex justify-content-center">
+  <form [formGroup]="registerForm" (submit)="registerUser()" class="m-auto bg-dark-subtle text-black p-5 rounded-3 w-25">
+    <div class="d-flex flex-column  ">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="name" class="form-control" id="name" placeholder="Enter Name"
+               formControlName="name" >
+        <div class="alert text-danger p-0 m-0" *ngIf="registerForm.get('name').errors?.['required']"> you must enter value</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter Email"
+               formControlName="email">
+        <div class="alert text-danger p-0 m-0"
+             *ngIf="registerForm.get('email').errors?.['required'] &&
+               registerForm.get('email').errors?.['touched']"
+        > you must enter value</div>
+
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter Password"
+               formControlName="password">
+        <div class="alert text-danger p-0 m-0"
+             *ngIf="registerForm.get('password').errors?.['required']"
+        > you must enter value</div>
+
+
+
+      <div class="mb-3">
+        <label for="confirm-password" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="confirm-password" placeholder="Enter Confirm Password"
+               formControlName="password_confirmation"
+               (keyup) ="checkPassword($event)">
+        <div class="alert text-danger p-0 m-0"
+             *ngIf="registerForm.get('password_confirmation').errors?.['required']"
+        > you must enter value</div>
+
+        <div class="alert text-danger p-0 m-0"
+             *ngIf="!isPasswordSame"> password does n't match</div>
+      </div>
+      </div>
+
+<!--      <mat-error *ngIf="responseData=='error'">incorrect password or name</mat-error>-->
+
+      <div class="d-flex justify-content-between">
+        <button type="submit" class="btn btn-outline-primary w-50 m-auto"> Register</button>
+      </div>
+      <div class="text-end pt-1 mt-1">
+        <a routerLink="/login" class="text-decoration-none">Back To Login</a>
+      </div>
+    </div>
+  </form>
+</div>

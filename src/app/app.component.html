@@ -1,0 +1,32 @@
+
+<!--<app-header></app-header>-->
+<!--<mat-drawer-container class="app-container">-->
+<!--  <mat-drawer mode="side" opened>-->
+<!--    <app-sidebar/>-->
+<!--  </mat-drawer>-->
+<!--  <mat-drawer-content>-->
+<!--    <router-outlet></router-outlet>-->
+<!--  </mat-drawer-content>-->
+<!--</mat-drawer-container>-->
+
+<!--<app-footer></app-footer>-->
+
+
+<main  class="row dark text-white w-100  m-0 px-0" >
+
+<!--  <div class="col-3 m-0">-->
+<!--    <app-sidebar></app-sidebar>-->
+<!--  </div>-->
+
+  <div class=" col-12 ">
+     <app-header *ngIf="displaymenu"></app-header>
+
+<!--    <mat-slide-toggle>Toggle me!</mat-slide-toggle>-->
+
+    <div class="col m-3" style="margin-top: 90px!important;">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</main>
+

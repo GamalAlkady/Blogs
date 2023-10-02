@@ -1,0 +1,37 @@
+
+<div class="container-body d-flex justify-content-between align-items-center dark-2 text-white p-1 px-2 w-100 rounded-3 shadow-lg">
+
+  <div class="d-flex justify-content-between  w-50">
+    <h2>Posts</h2>
+
+    <div class="input-group flex-nowrap w-75">
+      <span class="input-group-text" id="addon-wrapping"><mat-icon>search</mat-icon></span>
+      <input type="text" class="form-control" name="_search" [(ngModel)]="_search" (keyup.enter)="searchPost($event)" placeholder="Search" aria-label="search" aria-describedby="addon-wrapping">
+    </div>
+  </div>
+
+  <button class="btn btn-primary rounded-circle" mat-raised-button (click)="openDialog('0ms','0ms')"> Add </button>
+
+</div>
+
+
+
+<div class="row justify-content-start gap-2 dark-2 rounded-1 mt-2 p-2">
+
+  <div class="card col-12 " style="" *ngFor="let post of posts$ | async">
+    <div class="card-body">
+      <a routerLink="/show-post/{{post.id}}"  class="text-decoration-none"><h2 class="card-title">{{post.title}}</h2></a>
+      <p class="card-text overflow-hidden text-truncate">{{post.description}}</p>
+    </div>
+
+    <div>
+      <span class="badge text-bg-primary ms-1" *ngFor="let tag of post.tags|keyvalue">{{tag.value['name']}}</span>
+    </div>
+    <div class="d-flex justify-content-between p-2">
+      <button  class="btn btn-outline-primary waves-effect" (click)="editPost(post)">Edit</button>
+      <button  class="btn btn-outline-danger waves-effect" (click)="deletePost(post.id)">Delete</button>
+    </div>
+  </div>
+
+</div>
+

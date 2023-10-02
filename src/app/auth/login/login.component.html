@@ -1,0 +1,27 @@
+<div class="h-100 d-flex justify-content-center">
+  <form [formGroup]="login" (submit)="proceedLogin()" class="m-auto bg-dark-subtle text-black p-5 rounded-3 w-25">
+    <div class="d-flex flex-column  ">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" placeholder="name@example.com"
+               formControlName="email">
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="name@example.com"
+               formControlName="password">
+      </div>
+
+
+      <div class="alert text-danger" *ngIf="responseData=='error'">incorrect password or email</div>
+
+      <div class="d-flex justify-content-between">
+        <button type="submit" class="btn btn-outline-primary w-50 m-auto"> login</button>
+      </div>
+        <div class="text-end p-2 mt-1">
+          <a routerLink="/register" class="text-decoration-none">Create Account</a>
+        </div>
+    </div>
+  </form>
+</div>
